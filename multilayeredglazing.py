@@ -5,7 +5,8 @@ import physicalconstants as const
 
 
 class Gas(object):
-
+    """ material properties for gas
+    """
     def __init__(self, rho, lmbda, mu, Cp, beta):
 
         self.rho = rho  # kg/m3
@@ -20,9 +21,7 @@ class Gas(object):
         return Pr
 
 
-
-
-class Gap(object):
+class GasLayer(object):
     """ Gaz gap layer object
         Compute the thermal conductance due to convection
         as a function of deltaT
@@ -64,6 +63,27 @@ class Gap(object):
         """
         h = self.gas.lmbda / self.w * self.Nusselt( deltaT )
         return h
+
+
+
+class Solid(object):
+    """ material properties for solid
+    """
+    def __init__(self, rho, lmbda, mu, Cp, beta):
+
+        self.eps_in = eps_in  # surface emmisivity
+        self.eps_out = eps_out  #
+
+        self.R_in = R_in # infra-red reflectance for the inside surface
+        self.R_out = R_out # infra-red reflectance for the outside surface
+        self.T = T # infra-red transmittance
+
+class SolidLayer(object):
+
+    def __init__(self, gas, thickness):
+        self.gas = gas
+        self.w = thickness
+
 
 
 
