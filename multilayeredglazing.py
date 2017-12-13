@@ -64,3 +64,15 @@ class Gap(object):
         """
         h = self.gas.lmbda / self.w * self.Nusselt( deltaT )
         return h
+
+
+
+class MaterialLibrary(object):
+    """ common physical properties for materials
+    """
+
+    @property
+    def air(self):
+        return Gas( 1.29, 2.5e-2, 1.86e-5, 1.005e3, 3.67e-3 )
+
+matlib = MaterialLibrary()
